@@ -1,0 +1,284 @@
+:root{ /* custom properties, podemos almacenar cualquier valor para luego re utilizarlo en todo el DOC mas de una vez*/
+   --blanco: #ffffff;
+   --oscuro: #212121;
+   --primario:#33C1FF;
+   --secundario: #F9A3DF;
+   --gris:#757575;
+   --grisClaro:#dfe9f3;
+
+   /*EJEMPLO DE VALORES QUE PODEMOS ALMACENAR
+  --fuente principal: 3.8rem; */
+}
+/*GLOBALES*/
+html{
+    font-size: 62.5%;
+    box-sizing:border-box;
+    scroll-snap-type: y mandatory; /*aca ya lo estamos "llamando" */
+}
+
+/*scroll (snap) para que se detenga en SERVICIOS Y CONTACTO*/
+.servicios, .navegacion-principal, .formulario, .footer{
+scroll-snap-align: center;
+scroll-snap-stop: always; 
+}
+
+*,*:before,*::after{
+  box-sizing: inherit;
+}
+
+ body{
+    font-size:16px; /*1 rem = 10 px*/
+    font-family: "Quicksand", sans-serif;
+    background-image:linear-gradient(to top,var(--grisClaro) 0%, var(--blanco) 50%); /*DEGRADAR*/
+    
+ }
+
+ .contenedor{
+  max-width: 120rem; /* ESTE ES EL ESTANDAR 120 REM 1200PX */
+  /*
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin- left: auto;
+
+  ATAJO: margin: 0 auto 0 auto
+
+ o tambien este, porque vemos que se repite valores, CSS entiende que el primero es arriba y abajo
+ y el segundo izq y derecha*/
+  margin: 0 auto; /* ESTE IGUAL FUNCIONA*/
+}
+
+/*BOTON CONTACTAR*/
+.boton{
+ background-color: var(--primario);
+ color: var(--blanco);
+ padding: 1rem 3rem;
+ margin-top: 4rem;
+ font-size: 2rem;
+ font-weight: bold; /* o 700*/
+ text-decoration: none;
+ text-transform:uppercase;
+ border-radius: 1rem;
+ width: 60%;
+ text-align: center;
+ border: none;
+}
+@media(min-width:768px) {
+  .boton{
+    width: auto;
+  }
+}
+.boton:hover{
+  cursor: pointer;
+}
+/*sombra MIS SERVICIOS*/
+.sombra{
+  box-shadow: 0px 5px 15px -3px rgba(235,106,201,0.79);
+  background-color: var(--blanco);
+  padding:2rem;
+  border-radius: 2rem ;
+
+}
+/*TERMINA GLOBALES*/
+
+
+ /*TIPOGRAFIA*/
+ /* esto es reglas para la tipografia del documento (DESING SYSTEM*/
+ h1{
+  font-size: 3.8rem; /*o podemos usar la fuente que almacenamos arriba
+  var(--fuente principal);*/
+ }
+ h2{
+  font-size: 2.8rem;
+ }
+
+ h3{
+  font-size: 1.8rem;
+ }
+h1,h2,h3{
+  text-align: center;
+}
+
+/*TITULOS*/
+ .titulo span{
+    font-size: 2rem;
+ }
+
+ /*Utilidades*/
+ .w-100{
+  width: 100%;
+ }
+ @media(min-width:768px){
+  .w-100{
+    width: auto;
+  }
+ }
+ .flex{
+  display: flex;
+ }
+ .alinear-derecha{
+  justify-content: flex-end;
+ }
+
+/*NAVEGACION PRINCIPAL*/
+ .nav-bg{
+   background-color: var(--secundario);
+ }
+.navegacion-principal{
+  display:flex;
+  flex-direction: column;
+}
+
+
+/* El media querie para lo que se utiliza es para ajustar el tamano en diferentes dispositivos*/
+@media(min-width:768px) { 
+  .navegacion-principal{
+    flex-direction: row;
+    justify-content:space-between;
+  }
+}
+.navegacion-principal a{
+display: block;
+text-align: center;
+color:var(--blanco);
+text-decoration: none;
+font-size: 2rem;
+font-weight: bold; /* o puede ser 700 es el mismo resultado*/
+padding: 1rem;
+}
+.navegacion-principal a:hover{
+  background-color: var(--primario);
+  color: var(--oscuro);
+}
+ .hero{  /* PADRE*/
+  background-image: url(../img/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 450px;
+  position: relative;
+  margin-bottom: 2rem;
+ }
+.contenido-hero{ /*HIJO*/
+position: absolute;
+width: 100%;
+height: 100%;
+background-color: rgb(0,0,0,.6);
+background-color: rgb(0 0 0/60%); /*la misma opciond de arriba pero mas nueva*/
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+  color: var(--blanco);
+}
+
+/*PARTE "MIS SERVICIOS"*/
+@media(min-width:768px){
+
+.servicios{
+display: grid;
+
+/* ESTO ES PARA DEFINR COLUMNAS
+grid-template-columns: 300px 300px;
+grid-template-rows: 200px 800px; version larga
+grid: 200px 800px / 300px 300px /*version corta*/
+
+/*PONER LAS COLUMNAS A LA PAR, CUALQUIERA DE LAS 3 OPC*/
+/*grid-template-columns: 33.3% 33.3% 33.3%; /*abarca el 100% y queremos hacer 3 columnas una al lado de la otra*/
+/*grid-template-columns: 1fr 1fr 1fr; /*version corta, 1fraccion*/
+grid-template-columns: repeat(3, 1fr);/*repita 3 veces 1 fraccion, VERSION MAS CORTA*/
+column-gap: 2rem;
+  }
+}
+
+.servicio{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.servicio h3{
+color: var(--secundario);
+font-weight: 700;
+}
+
+.servicio p{
+line-height: 2; /*le da mas espacio entre letras interlineado*/
+text-align: center;
+}
+
+.servicio .iconos{
+  height: 15rem;
+  width: 15rem;
+  background-color: var(--primario);
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*CONTACTO FORMULARIO*/
+.formulario{
+background-color: var(--gris);
+width: min(60rem,100%); /* ese MIN, utiliza el valor mas pequeno del ancho de la pantalla de (100% tome 60 rem)*/
+margin: 0 auto;
+padding: 2rem;
+border-radius: 1rem;
+}
+.formulario fieldset{
+  border:none;
+}
+
+.formulario legend{
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color:var(--primario)
+}
+
+@media(min-width:768px){
+  .contenedor-campos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+    }
+}
+
+/*posicinando las colmnas y filas del formulario*/
+.campo:nth-child(3), .campo:nth-child(4){
+  grid-column: 1 / 3;
+}
+
+.campo{
+margin-bottom: 2rem;
+
+}
+.campo label{
+color: var(--blanco);
+font-weight: bold;
+margin-bottom: .5rem;
+display: block;
+
+}
+/*darle formato al espacio de MENSAJE del formulario*/
+.campo textarea{
+height: 20rem;
+}
+
+.input-text{
+  width: 100%;
+  border: none;
+  padding: 1.5rem;
+  border-radius: .5rem;
+}
+/*CENTRAR EL FOOTER*/
+.footer{
+  text-align: center;
+}
